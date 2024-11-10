@@ -41,6 +41,7 @@ const Print = () => {
     phone: "",
     address: "",
     remarks: "",
+    privacyPolicyAccepted: false
   });
   const [isLoader, setLoader] = useState(false);
   const [isSuccess, setSuccess] = useState(false);
@@ -188,6 +189,7 @@ const Print = () => {
         phone: "",
         address: "",
         remarks: "",
+        privacyPolicyAccepted: false
       });
       setDeliveryTime("");
       setCopies(1);
@@ -393,6 +395,19 @@ const Print = () => {
             {labels[language].deliveryTimeOptions.evening}
           </option>
         </select>
+
+        <label>
+  <input
+    type="checkbox"
+    required
+    checked={userInfo.privacyPolicyAccepted}
+    onChange={(e) => setUserInfo({ ...userInfo, privacyPolicyAccepted: e.target.checked })}
+  />
+  {language === "it" ? " &nbsp; Ho letto la " : " &nbsp; I have read the "} 
+  <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">
+    {language === "it" ? "Politica sulla Privacy" : "Privacy Policy"}
+  </a>
+</label>
 
         {isSuccess ? (
           <Success resendHandler={resendHandler} />
