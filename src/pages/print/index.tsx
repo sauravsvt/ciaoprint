@@ -28,7 +28,7 @@ const storage = getStorage(app);
 const database = getDatabase(app);
 
 const Print = () => {
-  const [files, setFiles] = useState([]);
+
   const [deliveryTime, setDeliveryTime] = useState("");
   const [printPreferences, setPrintPreferences] = useState({
     color: "bianco-e-nero",
@@ -47,9 +47,37 @@ const Print = () => {
   const [language, setLanguage] = useState("it"); 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
+  const [files, setFiles] = useState<File[]>([]); // Ensure the state is typed as an array of `File`
+
   const handleFileUpload = async (e: BaseSyntheticEvent) => {
-    setFiles(Array.from(e.target.files));
+    const allowedExtensions = [
+      "docx",
+      "ppt",
+      "pptx",
+      "doc",
+      "jpeg",
+      "jpg",
+      "png",
+      "pdf",
+    ];
+  
+    const selectedFiles = Array.from(e.target.files as FileList);
+    const filteredFiles = selectedFiles.filter((file: File) => {
+      const fileExtension = file.name.split(".").pop()?.toLowerCase() || ""; // Default to an empty string
+      return allowedExtensions.includes(fileExtension);
+    });
+  
+    if (filteredFiles.length !== selectedFiles.length) {
+      alert("Some files have unsupported formats. Please upload valid files.");
+    }
+  
+    setFiles((prevFiles) => [...prevFiles, ...filteredFiles]); // This should now work without error
   };
+  
+  
+  
+  
+
 
   const handleInputChange = (e: BaseSyntheticEvent) => {
     const { name, value } = e.target;
