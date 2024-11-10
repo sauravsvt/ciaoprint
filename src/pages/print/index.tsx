@@ -226,6 +226,8 @@ const Print = () => {
         afternoon: "Pomeriggio (12 PM - 4 PM)",
         evening: "Sera (4 PM - 7 PM)",
       },
+      copyright: "Tutti i diritti riservati.",
+      privacyPolicy: "Politica sulla privacy",
     },
     en: {
       title: "Print Delivery Service",
@@ -247,6 +249,8 @@ const Print = () => {
         afternoon: "Afternoon (12 PM - 4 PM)",
         evening: "Evening (4 PM - 7 PM)",
       },
+      copyright: "All rights reserved.",
+      privacyPolicy: "Privacy Policy",
     },
   };
 
@@ -402,6 +406,18 @@ const Print = () => {
           </button>
         )}
       </form>
+
+      <footer className={style.footer}>
+  <p>
+  Ciao! Print    &copy; {new Date().getFullYear()} {labels[language].copyright}
+  </p>
+  <p>
+    <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">
+      {labels[language].privacyPolicy}
+    </a>
+  </p>
+</footer>
+
     </div>
   );
 };
