@@ -104,7 +104,6 @@ const Print = () => {
     });
   };
   
-  
 
   const resendHandler = () => {
     setSuccess(false);
@@ -238,6 +237,7 @@ const Print = () => {
 
   return (
     <div className={style.App}>
+     <img src="/logo.png" alt="Logo" className={style.logo} />
       <header className={style.Appheader}>
         <h1>{labels[language].title}</h1>
         <p>{labels[language].description}</p>
