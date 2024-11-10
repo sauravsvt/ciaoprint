@@ -403,7 +403,9 @@ const Print = () => {
     checked={userInfo.privacyPolicyAccepted}
     onChange={(e) => setUserInfo({ ...userInfo, privacyPolicyAccepted: e.target.checked })}
   />
-  {language === "it" ? " &nbsp; Ho letto la " : " &nbsp; I have read the "} 
+  <span style={{ marginLeft: "4px" }}>
+    {language === "it" ? "Ho letto la " : "I have read the "}
+  </span>
   <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">
     {language === "it" ? "Politica sulla Privacy" : "Privacy Policy"}
   </a>
