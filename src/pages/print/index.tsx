@@ -47,7 +47,7 @@ const Print = () => {
   const [isSuccess, setSuccess] = useState(false);
   const [language, setLanguage] = useState("it"); 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-
+  const [ticketId, setTicketId] = useState<string | null>(null);
   const [files, setFiles] = useState<File[]>([]); // Ensure the state is typed as an array of `File`
 
   const handleFileUpload = async (e: BaseSyntheticEvent) => {
@@ -119,14 +119,14 @@ const Print = () => {
   };
 
   const handleSubmit = async (e: BaseSyntheticEvent) => {
-    e.preventDefault();
-    setLoader(true);
-     // Ensure phone number is exactly 10 digits
-  if (!/^\d{10}$/.test(userInfo.phone)) {
-    alert("Il numero di telefono deve contenere esattamente 10 cifre.");
-    setLoader(false);
-    return;
-  }
+      e.preventDefault();
+      setLoader(true);
+      // Ensure phone number is exactly 10 digits
+    if (!/^\d{10}$/.test(userInfo.phone)) {
+      alert("Il numero di telefono deve contenere esattamente 10 cifre.");
+      setLoader(false);
+      return;
+    }
 
 
     if (
@@ -167,9 +167,26 @@ const Print = () => {
         });
       }
 
+      const generateTicketId = () => {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let ticketId = '';
+        
+        for (let i = 0; i < 6; i++) {
+          ticketId += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+      
+        return ticketId;
+      };
+      
+      // Generate the 6-digit random ticket ID
+      const newTicketId = generateTicketId();
+      setTicketId(newTicketId);  // Store the ticketId in state
+
+
       const newUUID = uuidv4();
       const uuid = `${userInfo.name}-${userInfo.phone}-${newUUID}`;
       set(rex(database, "users/" + uuid), {
+        ticketId: newTicketId, 
         username: userInfo.name,
         phone: userInfo.phone,
         address: userInfo.address,
@@ -411,20 +428,21 @@ const Print = () => {
   </a>
 </label>
 
-        {isSuccess ? (
-          <Success resendHandler={resendHandler} />
-        ) : isLoader ? (
-          <ClipLoader
-            className={style.loader}
-            color="#008000"
-            size={"50px"}
-            speedMultiplier={0.8}
-          />
-        ) : (
-          <button type="submit" className={style.submitbtn}>
-            {labels[language].submit}
-          </button>
-        )}
+      {isSuccess ? (
+        <Success ticketId={ticketId ?? "Generating..."} resendHandler={resendHandler} />
+      ) : isLoader ? (
+        <ClipLoader
+          className={style.loader}
+          color="#008000"
+          size={"50px"}
+          speedMultiplier={0.8}
+        />
+      ) : (
+        <button type="submit" className={style.submitbtn}>
+          {labels[language].submit}
+        </button>
+      )}
+
       </form>
 
       <footer className={style.footer}>

@@ -1,25 +1,26 @@
+import React from "react";
 import style from "./style.module.scss";
 
 interface SuccessProps {
+  ticketId: string; // ticketId should be a string
   resendHandler: () => void;
 }
-const Success = ({ resendHandler }: SuccessProps) => {
+
+const Success: React.FC<SuccessProps> = ({ ticketId, resendHandler }) => {
   return (
-    <main className={style.successContainer}>
-      <div className={style.successMessage}>Successfully Sent</div>
-      <p className={style.successInfo}>
-        We will get in touch with you within half an hour
+    <div className={style.successContainer}>
+      <h2 className={style.heading}>Submission Successful!</h2>
+      <p>Your ticket ID is: <strong className={style.ticketId}>{ticketId}</strong></p>
+      <p>
+        For customized references, please contact us at{" "}
+        <a href="mailto:info@ciaoprint.it" className={style.contactLink}>
+          info@ciaoprint.it
+        </a>.
       </p>
-      <p className={style.successVisit}>Visit us Again</p>
-      <button
-        onClick={() => {
-          resendHandler();
-        }}
-        className={style.resendButton}
-      >
+      <button onClick={resendHandler} className={style.resendButton}>
         Resend
       </button>
-    </main>
+    </div>
   );
 };
 
