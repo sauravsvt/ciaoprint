@@ -1,0 +1,122 @@
+/* General Styling */
+.privacy-policy-container {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 2.8em;
+  color: #0073e6;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.content {
+  line-height: 1.6;
+}
+
+.h2 {
+  font-size: 1.6em;
+  color: #1d1d1d;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.p {
+  font-size: 1.1em;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.ul {
+  font-size: 1.1em;
+  margin-left: 20px;
+  list-style-type: disc;
+}
+
+.ul li {
+  margin-bottom: 12px;
+}
+
+.a {
+  color: #0073e6;
+  text-decoration: none;
+}
+
+.a:hover {
+  text-decoration: underline;
+}
+
+/* Add a little more spacing to the sections */
+.section {
+  margin-bottom: 40px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .privacy-policy-container {
+    padding: 30px;
+  }
+
+  .header h1 {
+    font-size: 2.4em;
+  }
+
+  .h2 {
+    font-size: 1.4em;
+  }
+
+  .p, .ul li {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 768px) {
+  .privacy-policy-container {
+    padding: 25px;
+  }
+
+  .header h1 {
+    font-size: 2em;
+  }
+
+  .h2 {
+    font-size: 1.3em;
+  }
+
+  .p, .ul li {
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 480px) {
+  .privacy-policy-container {
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 1.8em;
+  }
+
+  .h2 {
+    font-size: 1.2em;
+  }
+
+  .p, .ul li {
+    font-size: 0.9em;
+  }
+}
