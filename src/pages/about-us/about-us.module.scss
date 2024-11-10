@@ -1,0 +1,84 @@
+.about-us-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    color: #333;
+  }
+
+  .logo {
+    width: 100%; // Adapts to the parent container width
+    max-width: 200px; // Sets a maximum width for larger screens
+    height: auto; // Maintains aspect ratio
+    display: block;
+    margin: 0 auto; // Centers the logo
+  
+    @media (max-width: 600px) {
+      max-width: 150px; // Adjusts the max width for smaller devices
+    }
+  
+    @media (min-width: 1200px) {
+      max-width: 300px; // Increases size for larger screens if needed
+    }
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+  
+    h1 {
+      font-size: 2.5em;
+      color: #007bee;
+      font-weight: 600;
+    }
+  }
+  
+  .content {
+    line-height: 1.6;
+  
+    .h2 {
+      font-size: 1.8em;
+      margin-top: 30px;
+      margin-bottom: 20px;
+      color: #2a2a2a;
+    }
+  
+    .p {
+      margin-bottom: 15px;
+      color: #4d4d4d;
+    }
+  
+    .ul {
+      margin-left: 20px;
+      padding-left: 20px;
+      list-style-type: disc;
+  
+      li {
+        margin-bottom: 10px;
+        font-size: 1em;
+        color: #3a3a3a;
+      }
+  
+      strong {
+        color: #1d1d1d;
+      }
+    }
+  }
+  
+  .footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .footer a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  

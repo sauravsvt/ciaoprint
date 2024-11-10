@@ -1,0 +1,126 @@
+.pricesContainer {
+    padding: 20px;
+    background-color: #f0f4f8;
+  }
+
+  .logo {
+    width: 100%; // Adapts to the parent container width
+    max-width: 200px; // Sets a maximum width for larger screens
+    height: auto; // Maintains aspect ratio
+    display: block;
+    margin: 0 auto; // Centers the logo
+  
+    @media (max-width: 600px) {
+      max-width: 150px; // Adjusts the max width for smaller devices
+    }
+  
+    @media (min-width: 1200px) {
+      max-width: 300px; // Increases size for larger screens if needed
+    }
+  }
+  
+  .header {
+    text-align: center;
+    font-size: 2.5em;
+    color:  #007bee;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  
+  .pricesContent {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 column on mobile by default */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .priceItem {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+  
+    &:hover {
+      transform: translateY(-5px); /* Hover effect for interactivity */
+    }
+  
+    h3 {
+      color: #444;
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+  
+    p {
+      color: #666;
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+  
+    .price {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #007bff;
+    }
+  }
+  
+  .contactUs {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 1.2em;
+    color: #333;
+  }
+  
+  .contactUs a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .contactUs a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Tablet: iPad (Responsive from 768px) */
+  @media (min-width: 768px) {
+    .pricesContent {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+    }
+  
+    .priceItem {
+      padding: 25px;
+    }
+  }
+  
+  /* Desktop: Large screens (Responsive from 1024px) */
+  @media (min-width: 1024px) {
+    .pricesContent {
+      grid-template-columns: repeat(3, 1fr); /* 3 columns for desktops */
+      gap: 30px;
+    }
+  
+    .priceItem {
+      padding: 30px;
+    }
+  }
+  
+
+  .footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .footer a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  

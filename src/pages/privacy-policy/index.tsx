@@ -5,6 +5,7 @@ const PrivacyPolicy = () => {
   return (
     <div className={styles['privacy-policy-container']}>
       <header className={styles.header}>
+      <img src="/logo.png" alt="Logo" className={styles.logo} />
         <h1>Privacy Policy</h1>
       </header>
       <section className={styles.section}>
@@ -84,6 +85,20 @@ const PrivacyPolicy = () => {
           We may update this Privacy Policy from time to time. Any changes will be posted on this page, and the updated policy will take effect immediately upon posting.
         </p>
       </section>
+        {/* FOOTER */}
+      
+        <footer className={styles.footer}>
+        {/* copyright */}
+      <p>
+      Ciao! Print    &copy; All Rights Reserved
+      </p>
+
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', flexWrap: 'wrap' }}>
+        <a href="/privacy-policy" target="_blank" rel="noopener noreferrer"> Privacy Policy   </a>
+        <a href="/about-us" target="_blank" rel="noopener noreferrer" style={{ marginRight: '20px' }}>About Us</a>
+        <a href="/prices" target="_blank" rel="noopener noreferrer" style={{ marginRight: '20px' }}>Prices</a>
+        </div>
+    </footer>
     </div>
   );
 };

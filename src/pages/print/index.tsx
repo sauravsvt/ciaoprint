@@ -408,14 +408,22 @@ const Print = () => {
       </form>
 
       <footer className={style.footer}>
-  <p>
-  Ciao! Print    &copy; {new Date().getFullYear()} {labels[language].copyright}
-  </p>
-  <p>
-    <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">
-      {labels[language].privacyPolicy}
-    </a>
-  </p>
+{/* copyright */}
+      <p>
+      Ciao! Print    &copy; {new Date().getFullYear()} {labels[language].copyright}
+      </p>
+
+      {/* footer link */}
+
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', flexWrap: 'wrap' }}>
+  <a href="/privacy-policy" target="_blank" rel="noopener noreferrer"> Privacy Policy   </a>
+  <a href="/about-us" target="_blank" rel="noopener noreferrer" style={{ marginRight: '20px' }}>About Us</a>
+  <a href="/prices" target="_blank" rel="noopener noreferrer" style={{ marginRight: '20px' }}>Prices</a>
+
+
+</div>
+
+
 </footer>
 
     </div>

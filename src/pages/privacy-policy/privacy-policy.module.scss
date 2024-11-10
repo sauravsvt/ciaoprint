@@ -10,6 +10,22 @@
   color: #333;
 }
 
+.logo {
+  width: 100%; // Adapts to the parent container width
+  max-width: 200px; // Sets a maximum width for larger screens
+  height: auto; // Maintains aspect ratio
+  display: block;
+  margin: 0 auto; // Centers the logo
+
+  @media (max-width: 600px) {
+    max-width: 150px; // Adjusts the max width for smaller devices
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 300px; // Increases size for larger screens if needed
+  }
+}
+
 .header {
   text-align: center;
   margin-bottom: 40px;
@@ -21,6 +37,7 @@
   margin-bottom: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-weight: 600;
 }
 
 .content {
@@ -120,3 +137,22 @@
     font-size: 0.9em;
   }
 }
+
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+.footer a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
