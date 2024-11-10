@@ -77,6 +77,13 @@ const Print = () => {
 
   const handleInputChange = (e: BaseSyntheticEvent) => {
     const { name, value } = e.target;
+
+    if (name === "phone" && !/^\d{0,10}$/.test(value)) {
+      // Allow only numeric values and up to 10 digits
+      return;
+    }
+  
+
     setUserInfo({ ...userInfo, [name]: value });
   };
 
@@ -113,6 +120,14 @@ const Print = () => {
   const handleSubmit = async (e: BaseSyntheticEvent) => {
     e.preventDefault();
     setLoader(true);
+     // Ensure phone number is exactly 10 digits
+  if (!/^\d{10}$/.test(userInfo.phone)) {
+    alert("Il numero di telefono deve contenere esattamente 10 cifre.");
+    setLoader(false);
+    return;
+  }
+
+
     if (
       files.length === 0 ||
       !userInfo.name ||
