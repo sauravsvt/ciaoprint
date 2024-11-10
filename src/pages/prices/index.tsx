@@ -5,7 +5,10 @@ const Prices = () => {
   return (
     <div className={styles.pricesContainer}>
       <header className={styles.header}>
-      <img src="/logo.png" alt="Logo" className={styles.logo} />
+      <a href="https://ciaoprint.it">
+  <img src="/logo.png" alt="Logo" className={styles.logo} />
+</a>
+
         <h1>Our Prices</h1>
       </header>
       <section className={styles.pricesContent}>

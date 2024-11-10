@@ -5,7 +5,10 @@ const AboutUs = () => {
   return (
     <div className={styles['about-us-container']}>
       <header className={styles.header}>
-      <img src="/logo.png" alt="Logo" className={styles.logo} />
+      <a href="https://ciaoprint.it">
+  <img src="/logo.png" alt="Logo" className={styles.logo} />
+</a>
+
         <h1>About Us</h1>
       </header>
       <section className={styles.content}>

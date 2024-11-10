@@ -256,7 +256,10 @@ const Print = () => {
 
   return (
     <div className={style.App}>
-     <img src="/logo.png" alt="Logo" className={style.logo} />
+    <a href="https://ciaoprint.it">
+  <img src="/logo.png" alt="Logo" className={style.logo} />
+</a>
+
       <header className={style.Appheader}>
         <h1>{labels[language].title}</h1>
         <p>{labels[language].description}</p>

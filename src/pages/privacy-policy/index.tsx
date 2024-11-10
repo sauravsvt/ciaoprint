@@ -5,7 +5,10 @@ const PrivacyPolicy = () => {
   return (
     <div className={styles['privacy-policy-container']}>
       <header className={styles.header}>
-      <img src="/logo.png" alt="Logo" className={styles.logo} />
+      <a href="https://ciaoprint.it">
+  <img src="/logo.png" alt="Logo" className={styles.logo} />
+</a>
+
         <h1>Privacy Policy</h1>
       </header>
       <section className={styles.section}>
