@@ -74,10 +74,6 @@ const Print = () => {
     setFiles((prevFiles) => [...prevFiles, ...filteredFiles]); // This should now work without error
   };
   
-  
-  
-  
-
 
   const handleInputChange = (e: BaseSyntheticEvent) => {
     const { name, value } = e.target;
@@ -98,10 +94,17 @@ const Print = () => {
   };
 
   const deleteFile = (fileName: string) => {
-    setFiles((prevFiles) =>
-      prevFiles.filter((fileObj: File) => fileObj.name !== fileName)
-    );
+    setFiles((prevFiles) => {
+      const updatedFiles = prevFiles.filter((fileObj: File) => fileObj.name !== fileName);
+      // Clear file input if no files remain after deletion
+      if (updatedFiles.length === 0 && fileInputRef.current) {
+        fileInputRef.current.value = ""; // Reset the input
+      }
+      return updatedFiles;
+    });
   };
+  
+  
 
   const resendHandler = () => {
     setSuccess(false);
@@ -292,29 +295,29 @@ const Print = () => {
           ref={fileInputRef}
         />
 
-        <div className={style.fileList}>
-          {files.length > 0 && (
-            <ul>
-              {files.map((fileObj: File, index) => (
-                <li key={index}>
-                  {fileObj?.name} -{" "}
-                  <button
-                    type="button"
-                    onClick={() => deleteFile(fileObj.name)}
-                    className={style.buttonCancel}
-                  >
-                    Elimina
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
-          {files.length > 0 && (
-            <p className="text-lg capitalize text-red-500">
-              {files.length} file caricati.
-            </p>
-          )}
-        </div>
+<div className={style.fileList}>
+  {files.length > 0 && (
+    <ul>
+      {files.map((fileObj: File, index) => (
+        <li key={index}>
+          {fileObj?.name} -{" "}
+          <button
+            type="button"
+            onClick={() => deleteFile(fileObj.name)}
+            className={style.buttonCancel}
+          >
+            Elimina
+          </button>
+        </li>
+      ))}
+    </ul>
+  )}
+  <p className="text-lg capitalize text-red-500">
+    {files.length} file{files.length > 1 ? " caricati" : " caricato"}.
+  </p>
+</div>
+
+
 
         <label>{labels[language].printColor}</label>
         <select
