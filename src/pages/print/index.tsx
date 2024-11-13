@@ -190,6 +190,7 @@ const Print = () => {
         username: userInfo.name,
         phone: userInfo.phone,
         address: userInfo.address,
+        remarks: userInfo.remarks,
         deliveryTime: deliveryTime,
         numberOfCopies: copies,
         printPreferences: printPreferences,
@@ -231,6 +232,7 @@ const Print = () => {
       name: "Nome:",
       phone: "Numero di telefono:",
       address: "Indirizzo di consegna:",
+      remarks: "Scrivi descrizione",
       uploadFiles: "Carica file:",
       printColor: "Colore di stampa:",
       printSides: "Facciate di stampa:",
@@ -255,6 +257,7 @@ const Print = () => {
       name: "Name:",
       phone: "Phone Number:",
       address: "Delivery Address:",
+      remarks: "Further Description",
       uploadFiles: "Upload Files:",
       printColor: "Print Color:",
       printSides: "Print Sides:",
@@ -392,6 +395,15 @@ const Print = () => {
             +
           </button>
         </div>
+
+        <label>{labels[language].remarks}</label>
+        <textarea
+          name="remarks"
+          value={userInfo.remarks}
+          onChange={handleInputChange}
+          placeholder={labels[language].remarks}
+          required
+        />
 
         <label>{labels[language].selectDeliveryTime}</label>
         <select
