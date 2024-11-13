@@ -232,7 +232,7 @@ const Print = () => {
       name: "Nome:",
       phone: "Numero di telefono:",
       address: "Indirizzo di consegna:",
-      remarks: "Scrivi descrizione",
+      remarks: "Scrivi descrizione (opzionale)",
       uploadFiles: "Carica file:",
       printColor: "Colore di stampa:",
       printSides: "Facciate di stampa:",
@@ -257,7 +257,7 @@ const Print = () => {
       name: "Name:",
       phone: "Phone Number:",
       address: "Delivery Address:",
-      remarks: "Further Description",
+      remarks: "Further Description (Optional)",
       uploadFiles: "Upload Files:",
       printColor: "Print Color:",
       printSides: "Print Sides:",
@@ -402,7 +402,7 @@ const Print = () => {
           value={userInfo.remarks}
           onChange={handleInputChange}
           placeholder={labels[language].remarks}
-          required
+          
         />
 
         <label>{labels[language].selectDeliveryTime}</label>
