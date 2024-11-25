@@ -12,8 +12,6 @@
 /.next/
 /out/
 
-# ignoring the admin folder in src/pages
-src/pages/admin/
 
 # production
 /build
