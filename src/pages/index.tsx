@@ -1,7 +1,8 @@
-import Print from "./print";
+import Deprecated from "./deprecated";
+
 
 const Home = () => {
-  return <Print />;
+  return <Deprecated />;
 };
 
 export default Home;
