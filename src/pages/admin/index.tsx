@@ -1,8 +1,26 @@
 import React, { useEffect, useState } from "react";
 
+interface User {
+  id: string;
+  ticketId: string;
+  username: string;
+  phone: string;
+  address: string;
+  remarks: string;
+  deliveryTime: string;
+  numberOfCopies: number;
+  printPreferences: {
+    color: string;
+    sides: string;
+  };
+  files: { fileName: string; url: string }[];
+  timestamp: string;
+  isPrinted: boolean;
+}
+
 function Admin() {
-  const [users, setUsers] = useState(null);
-  const [selectedUser, setSelectedUser] = useState(null);
+  const [users, setUsers] = useState<User[] | null>(null);
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
   const databaseURL =
     "https://printge-bd4b6-default-rtdb.firebaseio.com/users.json";
@@ -13,27 +31,31 @@ function Admin() {
         const response = await fetch(databaseURL);
         const data = await response.json();
 
-        const usersArray = Object.keys(data).map((key) => ({
-          id: key,
-          ...data[key],
-        }));
+        if (data) {
+          const usersArray: User[] = Object.keys(data).map((key) => ({
+            id: key,
+            ...data[key],
+          }));
 
-        const filteredUsers = usersArray.filter((user) => !user.isPrinted);
+          const filteredUsers = usersArray.filter((user) => !user.isPrinted);
 
-        filteredUsers.sort(
-          (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
-        );
+          filteredUsers.sort((a, b) => {
+            const dateA = new Date(a.timestamp).getTime();
+            const dateB = new Date(b.timestamp).getTime();
+            return dateB - dateA;
+          });
 
-        setUsers(filteredUsers);
+          setUsers(filteredUsers);
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchUsers();
-  }, [databaseURL]);
+  }, []);
 
-  const markPrinted = async (id) => {
+  const markPrinted = async (id: string) => {
     try {
       await fetch(
         `https://printge-bd4b6-default-rtdb.firebaseio.com/users/${id}.json`,
@@ -46,28 +68,16 @@ function Admin() {
         }
       );
 
-      setUsers(users.filter((user) => user.id !== id));
+      setUsers((prevUsers) =>
+        prevUsers ? prevUsers.filter((user) => user.id !== id) : null
+      );
     } catch (error) {
       console.error("Error updating user:", error);
     }
   };
 
-  const showDetails = (user) => {
-    // Store only the necessary details for the modal
-    const userDetails = {
-      ticketId: user.ticketId,
-      username: user.username,
-      phone: user.phone,
-      address: user.address,
-      remarks: user.remarks, // Ensure 'remarks' is properly referenced
-      deliveryTime: user.deliveryTime,
-      numberOfCopies: user.numberOfCopies,
-      printPreferences: user.printPreferences,
-      files: user.files, // Ensure files contain fileName and url
-      timestamp: user.timestamp,
-    };
-
-    setSelectedUser(userDetails);
+  const showDetails = (user: User) => {
+    setSelectedUser(user);
   };
 
   const hideDetails = () => {
@@ -134,7 +144,7 @@ function Admin() {
               ))
             ) : (
               <tr>
-                <td colSpan="5" className="py-4 px-6 text-center">
+                <td colSpan={5} className="py-4 px-6 text-center">
                   Loading data...
                 </td>
               </tr>
